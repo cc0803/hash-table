@@ -1,6 +1,23 @@
 function hashMap() {
+	let buckets = Array(16);
+	let size = 16;
+
 	const hash = (key) => hashFunction(key);
-	return { hash };
+
+	const set = (key, value) => {
+		let index = Math.floor(hashFunction(key) % size);
+		console.log(index);
+
+		// Check if index is in range of buckets
+		if (index < 0 || index >= buckets.length) {
+			throw new Error("Trying to access index out of bound");
+		}
+
+		buckets[index] = [key, value];
+		console.log(buckets[index]);
+	};
+
+	return { hash, set };
 }
 
 // Hash Function
@@ -18,3 +35,4 @@ function hashFunction(key) {
 let myHashMap = hashMap();
 
 console.log(myHashMap.hash("Simon"));
+console.log(myHashMap.set("Micheal", "Millers"));
