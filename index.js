@@ -1,3 +1,11 @@
+class HashObj {
+	constructor(key, value) {
+		this.key = key;
+		this.value = value;
+	}
+	next = null;
+}
+
 function hashMap() {
 	let buckets = Array(16);
 	let size = 16;
@@ -6,15 +14,16 @@ function hashMap() {
 
 	const set = (key, value) => {
 		let index = Math.floor(hashFunction(key) % size);
-		console.log(index);
 
 		// Check if index is in range of buckets
 		if (index < 0 || index >= buckets.length) {
 			throw new Error("Trying to access index out of bound");
 		}
 
-		buckets[index] = [key, value];
-		console.log(buckets[index]);
+		if (buckets[index] == undefined) {
+			buckets[index] = [key, value];
+			console.log(buckets[index]);
+		}
 	};
 
 	return { hash, set };
@@ -34,5 +43,9 @@ function hashFunction(key) {
 
 let myHashMap = hashMap();
 
-console.log(myHashMap.hash("Simon"));
-console.log(myHashMap.set("Micheal", "Millers"));
+myHashMap.set("Micheal", "Mills");
+
+let myNode = new HashObj("Jürgen", "Jürgenson");
+console.log(myNode.key, myNode.value, myNode.next);
+myNode.next = "Hello";
+console.log(myNode.next);
