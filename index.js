@@ -21,9 +21,21 @@ function hashMap() {
 		}
 
 		if (buckets[index] == undefined) {
-			buckets[index] = [key, value];
-			console.log(buckets[index]);
+			buckets[index] = new HashObj(key, value);
+		} else {
+			let current = buckets[index];
+
+			while (current.next != null) {
+				if (current.key == key) {
+					current.value = value;
+					break;
+				}
+				current = current.next;
+			}
+
+			current.next = new HashObj(key, value);
 		}
+		console.log(buckets[index]);
 	};
 
 	return { hash, set };
@@ -42,10 +54,3 @@ function hashFunction(key) {
 }
 
 let myHashMap = hashMap();
-
-myHashMap.set("Micheal", "Mills");
-
-let myNode = new HashObj("Jürgen", "Jürgenson");
-console.log(myNode.key, myNode.value, myNode.next);
-myNode.next = "Hello";
-console.log(myNode.next);
