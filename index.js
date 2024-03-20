@@ -35,10 +35,24 @@ function hashMap() {
 
 			current.next = new HashObj(key, value);
 		}
-		console.log(buckets[index]);
 	};
 
-	return { hash, set };
+	const get = (key) => {
+		let index = hash(key) % size;
+		let currentObj = buckets[index];
+
+		while (currentObj != null) {
+			console.log(currentObj);
+			if (key == currentObj.key) {
+				return currentObj.value;
+			}
+			currentObj = currentObj.next;
+		}
+
+		return null;
+	};
+
+	return { hash, set, get };
 }
 
 // Hash Function
@@ -54,3 +68,17 @@ function hashFunction(key) {
 }
 
 let myHashMap = hashMap();
+
+myHashMap.set("Joshua", "N");
+myHashMap.set("Joshua", "No");
+myHashMap.set("Joshua", "Nor");
+myHashMap.set("Joshua", "Nord");
+myHashMap.set("Joshua", "Norde");
+myHashMap.set("Joshua", "Norden");
+myHashMap.set("Joshu", "Norden");
+myHashMap.set("Josh", "Norden");
+myHashMap.set("Jos", "Simeone");
+myHashMap.set("Jo", "Norden");
+myHashMap.set("J", "Norden");
+
+console.log(myHashMap.get("Jos"));
