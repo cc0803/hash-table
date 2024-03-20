@@ -53,6 +53,7 @@ function hashMap() {
 	};
 
 	const has = (key) => {
+		console.log(buckets);
 		let index = hash(key) % size;
 		let currentObj = buckets[index];
 
@@ -65,9 +66,28 @@ function hashMap() {
 
 	const remove = (key) => {
 		let index = hash(key) % size;
+		let currentObj = buckets[index];
+		let previousObj;
+
+		if (currentObj.key == key) {
+			buckets[index] = null;
+			return true;
+		}
+
+		while (currentObj != null) {
+			if (currentObj.key == key) {
+				previousObj.next = currentObj.next;
+				return true;
+			}
+
+			previousObj = currentObj;
+			currentObj = currentObj.next;
+		}
+
+		return false;
 	};
 
-	return { hash, set, get, has };
+	return { hash, set, get, has, remove };
 }
 
 // Hash Function
@@ -84,17 +104,17 @@ function hashFunction(key) {
 
 let myHashMap = hashMap();
 
-myHashMap.set("Joshua", "N");
-myHashMap.set("Joshua", "No");
-myHashMap.set("Joshua", "Nor");
-myHashMap.set("Joshua", "Nord");
-myHashMap.set("Joshua", "Norde");
+myHashMap.set("Leon", "Leonson");
+myHashMap.set("Isabel", "Hut");
+myHashMap.set("Karin", "Stiefel");
+myHashMap.set("Lera", "Stempel");
+myHashMap.set("Mark", "Frerichs");
 myHashMap.set("Joshua", "Norden");
-myHashMap.set("Joshu", "Norden");
-myHashMap.set("Josh", "Norden");
-myHashMap.set("Jos", "Simeone");
-myHashMap.set("Jo", "Norden");
-myHashMap.set("J", "Norden");
+myHashMap.set("Frank", "Walter");
+myHashMap.set("Angelo", "Stiller");
+myHashMap.set("Michaela", "Michaelis");
+myHashMap.set("Patrick", "Seedorf");
+myHashMap.set("Marianne", "Sürbrock");
 
-console.log(myHashMap.get("Jos"));
-console.log(myHashMap.has("Joshua"));
+console.log(myHashMap.remove("Lera"));
+console.log(myHashMap.has("Lera"));
