@@ -52,7 +52,22 @@ function hashMap() {
 		return null;
 	};
 
-	return { hash, set, get };
+	const has = (key) => {
+		let index = hash(key) % size;
+		let currentObj = buckets[index];
+
+		while (currentObj != null) {
+			if (key == currentObj.key) return true;
+			currentObj = currentObj.next;
+		}
+		return false;
+	};
+
+	const remove = (key) => {
+		let index = hash(key) % size;
+	};
+
+	return { hash, set, get, has };
 }
 
 // Hash Function
@@ -82,3 +97,4 @@ myHashMap.set("Jo", "Norden");
 myHashMap.set("J", "Norden");
 
 console.log(myHashMap.get("Jos"));
+console.log(myHashMap.has("Joshua"));
