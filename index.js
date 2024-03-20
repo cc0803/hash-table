@@ -104,7 +104,14 @@ function hashMap() {
 		return currentSize;
 	};
 
-	return { hash, set, get, has, remove, length };
+	const clear = () => {
+		for (let i = 0; i < size; i++) {
+			buckets[i] = null;
+		}
+		console.log(buckets);
+	};
+
+	return { hash, set, get, has, remove, length, clear };
 }
 
 // Hash Function
@@ -136,3 +143,4 @@ myHashMap.set("Marianne", "Sürbrock");
 console.log(myHashMap.remove("Lera"));
 console.log(myHashMap.has("Lera"));
 console.log(myHashMap.length());
+console.log(myHashMap.clear());
