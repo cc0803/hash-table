@@ -87,7 +87,24 @@ function hashMap() {
 		return false;
 	};
 
-	return { hash, set, get, has, remove };
+	const length = () => {
+		let currentSize = 0;
+		let currentElement;
+
+		for (let i = 0; i < size; i++) {
+			if (buckets[i] != null) {
+				currentSize++;
+				currentElement = buckets[i].next;
+				while (currentElement != null) {
+					currentSize++;
+					currentElement = currentElement.next;
+				}
+			}
+		}
+		return currentSize;
+	};
+
+	return { hash, set, get, has, remove, length };
 }
 
 // Hash Function
@@ -118,3 +135,4 @@ myHashMap.set("Marianne", "Sürbrock");
 
 console.log(myHashMap.remove("Lera"));
 console.log(myHashMap.has("Lera"));
+console.log(myHashMap.length());
