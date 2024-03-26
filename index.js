@@ -111,7 +111,21 @@ function hashMap() {
 		console.log(buckets);
 	};
 
-	return { hash, set, get, has, remove, length, clear };
+	const keys = () => {
+		let allKeys = [];
+
+		buckets.forEach((bucket) => {
+			let current = bucket;
+			while (current != null) {
+				allKeys.push(current.key);
+				current = current.next;
+			}
+		});
+
+		return allKeys;
+	};
+
+	return { hash, set, get, has, remove, length, clear, keys };
 }
 
 // Hash Function
@@ -140,7 +154,4 @@ myHashMap.set("Michaela", "Michaelis");
 myHashMap.set("Patrick", "Seedorf");
 myHashMap.set("Marianne", "Sürbrock");
 
-console.log(myHashMap.remove("Lera"));
-console.log(myHashMap.has("Lera"));
-console.log(myHashMap.length());
-console.log(myHashMap.clear());
+console.log(myHashMap.keys());
