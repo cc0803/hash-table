@@ -139,7 +139,29 @@ function hashMap() {
 		return values;
 	};
 
-	return { hash, set, get, has, remove, length, clear, keys, values };
+	const entries = () => {
+		let entriesArray = [];
+		buckets.forEach((bucket) => {
+			while (bucket != null) {
+				entriesArray.push([bucket.key, bucket.value]);
+				bucket = bucket.next;
+			}
+		});
+		return entriesArray;
+	};
+
+	return {
+		hash,
+		set,
+		get,
+		has,
+		remove,
+		length,
+		clear,
+		keys,
+		values,
+		entries,
+	};
 }
 
 // Hash Function
@@ -170,3 +192,4 @@ myHashMap.set("Marianne", "Sürbrock");
 
 console.log(myHashMap.keys());
 console.log(myHashMap.values());
+console.log(myHashMap.entries());
