@@ -125,7 +125,21 @@ function hashMap() {
 		return allKeys;
 	};
 
-	return { hash, set, get, has, remove, length, clear, keys };
+	const values = () => {
+		let values = [];
+
+		buckets.forEach((bucket) => {
+			let current = bucket;
+			while (current != null) {
+				values.push(current.value);
+				current = current.next;
+			}
+		});
+
+		return values;
+	};
+
+	return { hash, set, get, has, remove, length, clear, keys, values };
 }
 
 // Hash Function
@@ -155,3 +169,4 @@ myHashMap.set("Patrick", "Seedorf");
 myHashMap.set("Marianne", "Sürbrock");
 
 console.log(myHashMap.keys());
+console.log(myHashMap.values());
