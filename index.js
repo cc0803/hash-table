@@ -212,31 +212,3 @@ myHashMap.set("Konstanze", "Lombok");
 
 myHashMap.set("Leon", "Leonson");
 myHashMap.set("Isabel", "Hut");
-myHashMap.set("Karin", "Stiefel");
-myHashMap.set("Lera", "Stempel");
-myHashMap.set("Mark", "Frerichs");
-myHashMap.set("Joshua", "Norden");
-myHashMap.set("Frank", "Walter");
-myHashMap.set("Angelo", "Stiller");
-myHashMap.set("Michaela", "Michaelis");
-myHashMap.set("Patrick", "Seedorf");
-myHashMap.set("Marianne", "Sürbrock");
-myHashMap.set("Lili", "Amtor");
-myHashMap.set("Frieda", "Pablos");
-myHashMap.set("Erwin", "Müller");
-myHashMap.set("Dora", "McBeth");
-myHashMap.set("Siziliano", "Zubemendi");
-myHashMap.set("Xavier", "Bobles");
-myHashMap.set("Cloey", "Humphrey");
-myHashMap.set("Millisaint", "Virginia");
-myHashMap.set("Florence", "Georgia");
-myHashMap.set("Bellatrix", "Grey");
-myHashMap.set("James", "Maximov");
-myHashMap.set("Konstanze", "Lombo");
-
-myHashMap.clear();
-console.log(myHashMap.length());
-
-// console.log(myHashMap.keys());
-// console.log(myHashMap.values());
-// console.log(myHashMap.entries());
