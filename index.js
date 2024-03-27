@@ -114,10 +114,9 @@ function hashMap() {
 	};
 
 	const clear = () => {
-		for (let i = 0; i < size; i++) {
-			buckets[i] = null;
-		}
-		console.log(buckets);
+		buckets = Array(16);
+		size = 16;
+		elementAmount = 0;
 	};
 
 	const keys = () => {
@@ -235,6 +234,7 @@ myHashMap.set("Bellatrix", "Grey");
 myHashMap.set("James", "Maximov");
 myHashMap.set("Konstanze", "Lombo");
 
+myHashMap.clear();
 console.log(myHashMap.length());
 
 // console.log(myHashMap.keys());
